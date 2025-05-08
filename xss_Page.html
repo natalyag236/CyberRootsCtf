@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Voices of Freedom: Civil Rights Movement Archive</title>
+    <link rel="stylesheet" href="styles_xss.css">
+    <script>
+        const hiddenFlag = "FLAG{XSS_exploited_successfully}";
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Voices of Freedom</h1>
+            <p class="subtitle">Civil Rights Movement Archive</p>
+        </header>
+
+        <section class="article">
+            <h2>Article: Breaking Barriers in 1965</h2>
+            <p>This article highlights the efforts of activists who fought for equal rights. They used secret codes and messages to bypass censorship and restrictions, much like we safeguard freedom of information online today.</p>
+        </section>
+
+        <section class="comment-form">
+            <h3>Leave a Comment</h3>
+            <p>Share your thoughts on the history and resilience displayed here.</p>
+            <form method="POST" onsubmit="event.preventDefault(); addComment();">
+                <label for="comment">Your comment:</label><br>
+                <textarea id="theInput" rows="4" placeholder="Type your message..."></textarea><br>
+                <div class="buttons">
+                    <button type="button" onclick="changeHTML()">Post with jQuery</button>
+                    <button type="button" onclick="changeInnerHTML()">Post with Plain JS</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="comments">
+            <h3>User Comments</h3>
+            <div id="withjQuery">
+                <div class="user-comment"><strong>User1:</strong> Great article on resilience and strength!</div>
+                <div class="user-comment"><strong>User2:</strong> The courage shown during these times is inspiring.</div>
+            </div>
+            <div id="plainJS"></div>
+        </section>
+
+        <footer>
+            Inspired by the stories of strength and unity in the African American community.
+        </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function changeHTML() {
+            $("#withjQuery").append("<div class='user-comment'><strong>New User:</strong> " + $("#theInput").val() + "</div>");
+        }
+
+        function changeInnerHTML() {
+            var plainJSDiv = document.getElementById("plainJS");
+            plainJSDiv.innerHTML += "<div class='user-comment'><strong>New User:</strong> " + document.getElementById("theInput").value + "</div>";
+        }
+
+        function addComment() {
+        }
+    </script>
+</body>
+</html>

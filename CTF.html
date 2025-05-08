@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberRoots Capture The Flag</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+<style>
+     body {
+      background: linear-gradient(135deg, #ffffff, #d2b48c);
+      color: #333;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+</style>
+  
+ <!-- Navbar -->
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <!-- Brand links to home/index page -->
+      <a class="navbar-brand" href="index.php">CyberRootsCTF.com</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <!-- Dropdown toggle set to '#' so clicking it doesn't navigate away -->
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Explore
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <a class="dropdown-item" href="index.php">Home Page</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="CTF.html">CTF Page</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="Resources Page.html">Resource Page</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="About us.html">About Us</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Bootstrap 5 JS bundle (includes Popper) -->
+<script
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+></script>
+
+    <!-- Hero Section -->
+    <section class="hero-section container text-center my-5">
+        <h1>Cyber Roots CTF</h1>
+        <a href="#" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#servicesModal">Learn More</a>
+    
+        <!-- Services Modal -->
+        <div class="modal fade" id="servicesModal" tabindex="-1" aria-labelledby="servicesModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="servicesModalLabel">Cybersecurity Services</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <ul>
+                            <li>Penetration Testing</li>
+                            <li>Vulnerability Assessment</li>
+                            <li>Incident Response</li>
+                            <li>Security Audits</li>
+                            <li>Threat Intelligence</li>
+                            <li>Network Security Solutions</li>
+                            <li>Endpoint Protection</li>
+                            <li>Data Encryption Services</li>
+                            <li>Compliance and Risk Management</li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+
+<!-- Updated Score Board Section -->
+<section class="score-board container text-center my-5">
+  <h2>Score Board</h2>
+  <p>List of top scores will be displayed here.</p>
+
+  <!-- Form for submitting flags -->
+  <form id="submit-flag-form" action="submit_flag.php" method="POST" class="submit-flag-form">
+    <label for="flag">Flag:</label>
+    <input type="text" id="flag" name="flag_completed" required>
+    <input type="submit" value="Submit" class="btn btn-primary">
+  </form>
+
+  <!-- Leaderboard Table -->
+  <table class="leaderboard-table table table-striped table-bordered mt-4">
+    <thead>
+      <tr>
+        <th>Flags</th>
+        <th>Username</th>
+        <th>Flags Completed</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody id="leaderboard-body">
+      <!-- Rows will be dynamically generated here -->
+    </tbody>
+  </table>
+</section>
+
+<!-- Updated JavaScript -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const allowedKeywords = [
+        'UnD3rgrOunDRa1LrAd',
+        'XSS_exploited_successfully',
+        '12_secret_msgs',
+        'xss_binary_power',
+        'the_path_they_dont_s33',
+        'Hidden_in_plain_sight-Like_Quilts',
+        'freedom_railroad',
+        'R00T_CaP7ur3d_B00M',
+    ];
+
+    // Function to fetch user data from the server
+    function fetchUserData() {
+        fetch('fetch_leaderboard.php')
+            .then(response => response.json())
+            .then(data => {
+                populateLeaderboard(data.users);
+            })
+            .catch(error => console.error('Error fetching user data:', error));
+    }
+
+    // Function to populate the leaderboard table
+    function populateLeaderboard(users) {
+        const leaderboardBody = document.getElementById('leaderboard-body');
+        leaderboardBody.innerHTML = ''; // Clear existing rows
+
+        users.forEach((user, index) => {
+            const flagsCompleted = '🚩'.repeat(user.flagsCompleted); // Convert the number of flags to flag emojis
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${index + 1}</td> <!-- Rank -->
+                <td>${user.username}</td> <!-- Username -->
+                <td>${flagsCompleted}</td> <!-- Flags represented as emojis -->
+                <td>${user.score}</td> <!-- Score -->
+            `;
+            leaderboardBody.appendChild(row);
+        });
+    }
+
+    // Fetch and populate the leaderboard with user data
+    fetchUserData();
+
+    // Handle form submission via AJAX
+    const form = document.getElementById('submit-flag-form');
+    form.addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const flagInput = document.getElementById('flag').value.trim();
+
+        // Check if the submitted flag is in the list of allowed keywords
+        if (!allowedKeywords.includes(flagInput)) {
+            alert('Invalid flag. Please try again.');
+            return; // Stop the form submission if the flag is invalid
+        }
+
+        const formData = new FormData(form);
+
+        fetch('submit_flag.php', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Flag submitted successfully!');
+                    fetchUserData(); // Refresh the leaderboard
+                } else {
+                    alert('Error submitting flag: ' + data.message);
+                }
+            })
+            .catch(error => console.error('Error submitting flag:', error));
+    });
+});
+</script>
+
+<!-- Updated CSS -->
+<style>
+  .score-board {
+    background: linear-gradient(135deg, #f9f0df, #ffffff);
+    border: 2px solid #d2b48c;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .leaderboard-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+
+  .leaderboard-table th,
+  .leaderboard-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #d2b48c;
+  }
+
+  .leaderboard-table th {
+    background-color: #8B4513;
+    color: #fff;
+  }
+
+  .leaderboard-table tr:nth-child(even) {
+    background-color: #f9f0df;
+  }
+
+  .leaderboard-table tr:nth-child(odd) {
+    background-color: #ffffff;
+  }
+    .challenge-card {
+      background: linear-gradient(135deg, #f9f0df, #ffffff);
+      border: 2px solid #d2b48c;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .challenge-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    .challenge-card h2 {
+      color: #8B4513;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .challenge-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .challenge-card ul li + li {
+      margin-top: 0.5rem;
+    }
+    .challenge-card a {
+      color: #A0522D;
+      text-decoration: none;
+    }
+    .challenge-card a:hover {
+      text-decoration: underline;
+    }
+  </style>
+  
+  <!-- Cyber Challenges Section -->
+  <section class="main-content container my-5">
+    <div class="row text-center mb-4">
+      <div class="col">
+        <h1>Cyber Challenges</h1>
+      </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <!-- Cryptography -->
+      <div class="col">
+        <div class="challenge-card">
+          <h2>Cryptography</h2>
+          <ul>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#cryptoModal1">File Manipulation</a></li>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#cryptoModal2">Cross‑Site Scripting</a></li>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#cryptoModal3">Cryptography</a></li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Forensics -->
+      <div class="col">
+        <div class="challenge-card">
+          <h2>Forensics</h2>
+          <ul>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#forensicsModal1">Log Analysis</a></li>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#forensicsModal2">Steganography</a></li>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#forensicsModal3">Reverse Engineering</a></li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Museum Environment  -->
+      <div class="col">
+        <div class="challenge-card">
+          <h2>Museum Environment CTF</h2>
+          <ul>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#webModal3">CAPTURE ROOT!</a></li>
+          </ul>
+        </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Modals -->
+<!-- Cryptography Modals -->
+<div class="modal fade" id="cryptoModal1" tabindex="-1" aria-labelledby="cryptoModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cryptoModalLabel1">Steganography 1</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+                <p>
+                    File Manipulation embodies the ingenuity and resilience of African Americans who hid critical 
+                    information in plain sight during their struggle for freedom. Just as quilts carried secret
+                     maps or songs encoded vital directions, steganography disguises data within ordinary objects 
+                     to protect its secrets. In this CTF challenge, you’ll unveil the true nature of a deceptively 
+                     named file, discover a hidden PNG containing a secret ZIP file, and unlock its contents using
+                      a password embedded in the image's metadata. This challenge celebrates the creativity and 
+                      determination needed to reveal hidden truths and achieve liberation.
+                </p>
+                <a href="flags/secret.txt" download>
+                    <p>Download: Secret File</p>
+                </a>
+            <h3>Hint</h3>
+                <p class="hint">
+                    
+                </p>    
+                <!-- Question Section -->
+                <div class="questions mt-4">
+                    <h6>Questions:</h6>
+                    <ol>
+                        <li>How many failed login attempts are in the logs?</li>
+                        <li>What is the IP address of the attacker?</li>
+                        <li>What is the hidden flag?</li>
+                    </ol>
+                </div>           
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="cryptoModal2" tabindex="-1" aria-labelledby="cryptoModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cryptoModalLabel2">Cross Site Scripting</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                  Just like civil rights activists used secret messages to outsmart oppressive systems, 
+                  you’ll need to slip your message past the browser’s defenses to uncover the truth.
+                  This comment section is your testing ground. $hiddenFlag in the code is a digital flag and your mission is to inject a 
+                  clever XSS payload that reveals it.
+
+                  Think of it like coded letters passed in plain sight—only now, your code is the message.
+
+                  Use the comment box, find the vulnerability, and script your way to the flag.
+
+                  <a href="flags/xss_Page.html" target="_blank">Click here to open the XSS page</a>
+                </a>
+                
+                <h3>Hint</h3>
+                <p class="hint">
+                    Use browser dev tools to inspect elements, test payloads, and watch how your input is handled. 
+                    Look closely at how your comment is added to the page. Is it being escaped or sanitized before being displayed?
+                    Try injecting a simple script tag like alert('XSS') to see what happens.
+                </p>                    
+                <!-- Question Section -->
+                <div class="questions mt-4">
+                    <h6>Questions:</h6>
+                    <ol>
+                      <li>What's the final flag?</li>
+                    </ol>
+                </div>       
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="cryptoModal3" tabindex="-1" aria-labelledby="cryptoModalLabel3" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cryptoModalLabel3">Cryptography</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="challenge-description">
+                  Cryptography mirrors the coded language and secret messages used by African American leaders 
+                  during the Underground Railroad and Civil Rights Movement to communicate safely under oppressive 
+                  conditions. Much like Harriet Tubman’s use of spirituals with hidden meanings to guide people to 
+                  freedom, cryptography encodes information to protect it from adversaries. In this CTF challenge, 
+                  you'll encounter encrypted data that requires the right cipher and key to decode its true meaning. 
+                  By breaking the code, you’ll uncover a flag, celebrating the resilience and ingenuity of those who 
+                  fought for liberation through hidden messages.
+                </p>
+                  <a href="flags/ciphers.txt" download>Download: Cipher File</a>
+
+
+                
+
+                <h3>Hint</h3>
+               <p class="hint">
+                    Within txt file.
+                </p>    
+                    
+                </p>    
+                <!-- Question Section -->
+                <div class="questions mt-4">
+                    <h6>Questions:</h6>
+                    <ol>
+                      <li>What is the encrypytion method for cipher 1?</li>
+                      <li>What is the flag for cipher 1?</li>
+                      <li>What is the flag for cipher 2?</li>
+                      <li>What is the flag for cipher 3?</li>
+                    </ol>
+                </div>       
+             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Forensics Modals -->
+<div class="modal fade" id="forensicsModal1" tabindex="-1" aria-labelledby="forensicsModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="forensicsModalLabel1">Forensics Challenge: Log Analysis</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Challenge Description -->
+                <p class="challenge-description">
+                    Log analysis is related to the vigilance of conductors on the Underground Railroad, 
+                    who interpreted every signal, whisper, and movement to guide enslaved people to freedom. 
+                    Just as hidden patterns in events told stories of danger or opportunity, log analysis involves 
+                    finding meaningful insights in system logs to detect anomalies, intrusions, or hidden activities.
+                     In this CTF challenge, inspired by the efforts to decode the paths to freedom, you'll analyze logs
+                      from a simulated SSH server under attack. Buried within the entries is a flag, waiting for your
+                       keen eyes to uncover.                </p>
+                <a href="sshLogs.txt" download>
+                    <p>Download: SSH Logs</p>
+                </a>
+
+                <!-- Hint Section -->
+                <div class="hint-section mt-4">
+                    <h6>Hint:</h6>
+                    <p class="hint">
+                        Use tools like <strong>grep</strong>, <strong>awk</strong>, or <strong>sed</strong> to filter and analyze the log entries efficiently.
+                        Pay attention to the IP addresses, ports, and user login attempts—there’s a pattern among the connections and failures. 
+                        Look for successful connections from a specific IP and uncover the flag stored in its session entry. 
+                        Much like interpreting escape routes, these logs reveal the hidden story of persistence and success.
+                    </p>
+                </div>
+
+                <!-- Question Section -->
+                <div class="questions mt-4">
+                    <h6>Questions:</h6>
+                    <ol>
+                        <li>How many failed login attempts are in the logs?</li>
+                        <li>What is the IP address of the attacker?</li>
+                        <li>What is the hidden flag?</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="forensicsModal2" tabindex="-1" aria-labelledby="forensicsModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="forensicsModalLabel2">Steganography 2</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="challenge-description">
+                    Steganography is like the hidden narratives in William Still's The Underground Railroad Records, 
+                    where stories of freedom seekers were veiled in plain sight to protect their identities and struggles. 
+                    Just as Still encoded detailed records in discreet ledgers and hidden notations to avoid detection, 
+                    steganography conceals information within seemingly ordinary files. In this challenge, 
+                    you'll channel the spirit of uncovering these hidden truths by analyzing metadata in a file that 
+                    holds a secret connected to the brave individuals chronicled in Still’s work. The task requires patience, 
+                    sharp observation, and the ability to interpret what lies beneath the surface.
+                </p>
+                <a href="wStill.jpg" download>
+                    <p>Download: William Still Image</p>
+                </a>
+                <h3>Hint</h3>
+                <p class="hint">
+                    Explore the file's metadata using tools such as exiftool or strings. Hidden within these details, 
+                    you’ll find a clue that connects to the courageous stories of freedom chronicled in The Underground 
+                    Railroad Records. Remember, like Still’s encrypted notations, the hidden message is in the details—inspect 
+                    attributes like comments, authors, or creation notes for the encoded truth.
+                </p>
+                    <!-- Question Section -->
+                <div class="questions mt-4">
+                    <h6>Questions:</h6>
+                    <ol>
+                        <li>How many failed login attempts are in the logs?</li>
+                        <li>What is the IP address of the attacker?</li>
+                        <li>What is the hidden flag?</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="forensicsModal3" tabindex="-1" aria-labelledby="forensicsModalLabel3" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="forensicsModalLabel3">Reverse Engineering</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h2>Challenge Theme</h2>
+                <p class="challenge-description">
+                    Reverse engineering is like uncovering the secrets of the Underground Railroad, where hidden paths, coded signals, 
+                    and secret keys guided enslaved African Americans to freedom. Just as conductors decoded songs and symbols to navigate 
+                    treacherous routes, reverse engineers analyze binary code, disassemble programs, and bypass obfuscation to uncover hidden 
+                    logic or retrieve crucial data. Both require critical thinking, persistence, and the ability to piece together clues while 
+                    overcoming barriers designed to mislead or deter. The goal, whether finding freedom or uncovering a program’s secrets, is 
+                    a journey of discovery and ingenuity.
+                </p>
+                <a href="flags/Binary201" download>
+                    <p>Download: Binary</p>
+                </a>
+                <h3>Hint</h3>
+                <p class="hint">
+                    The encryption method used is <strong>XOR</strong>, with the key being visible in the disassembled code as <code>45h</code>. 
+                    Look for functions or references that manipulate the encoded data—these will likely guide you to where the decryption occurs 
+                    and the flag is revealed. Pay attention to loops processing byte arrays and any constants being XORed against the data!
+                </p>
+                <!-- Question Section -->
+                <div class="questions mt-4">
+                    <h6>Questions:</h6>
+                    <ol>
+                        <li>How many failed login attempts are in the logs?</li>
+                        <li>What is the IP address of the attacker?</li>
+                        <li>What is the hidden flag?</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  
+  <!-- Museum Environment CTF -->
+  <div class="modal fade" id="webModal3" tabindex="-1" aria-labelledby="webModalLabel3" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="webModalLabel3">Museum Environment CTF</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>This <code>BlackBox environment</code> CTF. Test all your skills you learned and attempt to escalate privileges to gain the <code>flag!</code>.</p>
+          <a href="CyberRoots.zip" download>
+            <p>Download: cyberRoots VM</p>
+        </a>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<style>
+    /* Footer */
+    footer {
+  background: #ffffff;
+  color: #333;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  border-top: 1px solid #d2b48c;
+}
+footer img {
+  width: 24px;
+  margin: 0 5px;
+  vertical-align: middle;
+}
+</style>
+
+   <!-- Footer with Social Media Icons -->
+<footer class="text-center py-3 mt-5">
+    <p>&copy; 2024 Cyber Roots CTF. All rights reserved.</p>
+    <a href="https://facebook.com" class="me-2">
+      <img src="Images/Facebook.jpg" alt="Facebook">
+    </a>
+    <a href="https://instagram.com" class="me-2">
+      <img src="Images/Insta.jpg" alt="Instagram">
+    </a>
+  </footer>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

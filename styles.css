@@ -1,0 +1,164 @@
+body {
+    background-color: #0b1131; 
+    color: white;
+    font-family: 'Arial', sans-serif;
+    margin-right: 10px;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #8B4513,#D2B48C);
+    color: #fff;
+    padding: 80px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+}
+
+.laptop-img {
+    max-width: 100%;
+    height: auto;
+    height: 50vh;
+}
+
+.features {
+    margin-top: 20px;
+}
+
+.features i {
+    font-size: 1.5rem;
+    margin-right: 10px;
+    color: #00ccff;
+}
+
+.hero-section .btn-primary {
+    background-color: #D2B48C;
+    border: none;
+}
+
+/* Challenge Section */
+.challenge-box {
+    background-color: #001fea;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+
+.challenge-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.challenge-list li {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.challenge-list input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.icons {
+    display: flex;
+    gap: 5px;
+}
+
+.completed-status {
+    margin-top: 10px;
+}
+
+.add-task {
+    color: #00ccff;
+    text-decoration: none;
+}
+
+.logo-title {
+    color: #00ccff;
+    margin-top: 50px;
+}
+
+footer {
+    background-color: #f8f9fa;
+    color: black;
+    padding: 10px 0;
+}
+/* Modal Header */
+.modal-header {
+    background-color: #1b1f38; /* Matches dark section theme */
+    border-bottom: 2px solid #00ccff; /* Highlight border */
+}
+
+.modal-header h5 {
+    color: #00ccff; /* Matches site theme */
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header .btn-close {
+    color: #ffffff;
+    opacity: 0.7;
+}
+
+.modal-header .btn-close:hover {
+    color: #ffffff;
+    opacity: 1;
+}
+
+/* Modal Body Styling */
+.modal-body {
+    background-color: #f8f9fa; /* Light for readability */
+    color: #000000; /* High contrast text */
+    padding: 20px;
+    border-radius: 8px;
+    text-align: justify;
+    line-height: 1.6;
+}
+
+.modal-body h2, .modal-body h3 {
+    color: #1b1f38; /* Darker accent color */
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.modal-body .challenge-description, .modal-body .hint {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.modal-body .hint {
+    background-color: #e9ecef; /* Subtle highlight for the hint section */
+    padding: 10px;
+    border-radius: 5px;
+    font-family: monospace; /* Differentiates technical text */
+    color: #495057; /* Dark text for readability */
+}
+
+
+
+.challenge-list a {
+    color: black; 
+    text-decoration: none;
+}
+
+.challenge-list a:hover {
+    color: rgb(0, 0, 0); 
+    text-decoration: underline; 
+}
+
+
+

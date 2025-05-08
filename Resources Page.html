@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberRoots Capture The Flag</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+ <!-- Navbar -->
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <!-- Brand links to home/index page -->
+    <a class="navbar-brand" href="index.php">CyberRootsCTF.com</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <!-- Dropdown toggle set to '#' so clicking it doesn't navigate away -->
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Explore
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item" href="index.php">Home Page</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="CTF.html">CTF Page</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="Resources Page.html">Resource Page</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="About us.html">About Us</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Bootstrap 5 JS bundle (includes Popper) -->
+<script
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+></script>
+
+    <!-- Full-width image banner -->
+    <section class="image-banner">
+        CyberRoots Resources
+    </section>
+
+    <!-- Main Content -->
+    <section class="main-content">
+      <div class="container">
+        <!-- Section Heading for Resource Links -->
+        <h2 class="text-center mb-4" style="color: #fff;"></h2>
+        <!-- Resource Links Grid -->
+        <div class="row g-4 links-container mb-5">
+          <div class="col-md-4">
+            <a href="https://www.youtube.com/watch?v=N_3AGB9Vf9E&list=PLKwUZp9HwWoDDBPvoapdbJ1rdofowT67z" 
+               class="link-box d-block text-center" target="_blank">IDA Pro</a>
+          </div>
+          <div class="col-md-4">
+            <a href="https://www.youtube.com/watch?v=isBfS2Q-LmQ" 
+               class="link-box d-block text-center" target="_blank">File Extraction</a>
+          </div>
+          <div class="col-md-4">
+            <a href="MetaData.mov" class="link-box d-block text-center" download>Meta Data</a>
+          </div>
+          <div class="col-md-4">
+            <a href="WebEnumeration.mov" class="link-box d-block text-center" download>Web Enumeration</a>
+          </div>
+          <div class="col-md-4">
+            <a href="BruteForceSuccess.mov" class="link-box d-block text-center" download>Bruteforce</a>
+          </div>
+        </div>
+    
+          
+
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Accordion Example</title>
+            <style>
+             body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #ffffff, #d2b48c);
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Full-width Image Banner */
+    .image-banner {
+      background: linear-gradient(135deg, #ffffff, #d2b48c);
+      text-align: center;
+      padding: 60px 20px;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 40px;
+    }
+
+    /* Main Content */
+    .main-content {
+      padding: 20px 0;
+    }
+
+    /* Section Headings */
+    .main-content h2 {
+      color: #333;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    /* Resource Links Grid */
+    .links-container .link-box {
+      display: block;
+      background: rgba(255, 255, 255, 0.9);
+      color: #8B4513;
+      padding: 20px;
+      text-align: center;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      border: 2px solid #d2b48c;
+      transition: transform 0.3s, background-color 0.3s;
+    }
+    .links-container .link-box:hover {
+      background-color: #d2b48c;
+      color: #333;
+      transform: scale(1.05);
+    }
+
+    /* Grid Layout for Resource Links */
+    .links-container {
+      margin-bottom: 40px;
+    }
+    .links-container .col-md-4 {
+      margin-bottom: 20px;
+    }
+
+              /* Basic styling for the accordion container */
+              .accordion {
+                width: 100%;
+                max-width: 600px;
+                margin: 40px auto;
+                border: 1px solid #D2B48C;
+                border-radius: 5px;
+                overflow: hidden;
+                background: rgba(255, 255, 255, 0.9);
+                color: #333;              }
+              
+              /* Styling for each accordion section */
+              .accordion-item {
+                border-bottom: 1px solid #D2B48C;
+              }
+              
+              /* Styling for the clickable header */
+              .accordion-header {
+                background-color: #8B4513;
+                cursor: pointer;
+                padding: 15px;
+                font-weight: bold;
+                color: #fff;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              }
+            
+              .accordion-header:hover {
+                background-color: #A0522D;
+              }
+              
+              /* Initially hidden content */
+              .accordion-content {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                padding: 0 15px;
+                background-color: #fff;
+                color: #333;
+              }
+              
+              /* Expanded content styling */
+              .accordion-content.open {
+                max-height: 1000px;
+                padding: 15px;
+              }
+              .accordion-content ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    .accordion-content li {
+      margin-bottom: 10px;
+    }
+    .accordion-content a {
+      color: #8B4513;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .accordion-content a:hover {
+      text-decoration: underline;
+    }
+            </style>
+   
+             <!-- Section Heading for Accordion -->
+    <h2 class="text-center mb-4" style="color: #fff;">More Resources</h2>
+            
+              <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                  YouTube Resources
+                </div>
+                <div class="accordion-content">
+                  <ul style="list-style-type: none; padding: 0; margin: 0;">
+                    <li><a href="https://www.youtube.com/c/DavidBombal" target="_blank">David Bombal</a> - Networking and cybersecurity tutorials, including ethical hacking and Cisco training.</li>
+                    <li><a href="https://www.youtube.com/c/JohnHammond010" target="_blank">John Hammond</a> - CTF walkthroughs, malware analysis, and practical cybersecurity lessons.</li>
+                    <li><a href="https://www.youtube.com/c/STÖK" target="_blank">STÖK</a> - Web application security, bug bounties, and hacking tips from a hacker’s perspective.</li>
+                    <li><a href="https://www.youtube.com/c/NetworkChuck" target="_blank">Network Chuck</a> - Cybersecurity, hacking, and networking content presented in an engaging style.</li>
+                    <li><a href="https://www.youtube.com/c/TheCyberMentor" target="_blank">The Cyber Mentor</a> - Ethical hacking tutorials, penetration testing labs, and career advice for aspiring cybersecurity professionals.</li>
+                    <li><a href="https://youtu.be/4t4kBkMsDbQ?si=lGPp6JReC45qrN4f" target="_blank">Nmap</a> - Unlock the power of Nmap to uncover and address network vulnerabilities like a pro.</li>
+                    <li><a href="https://youtu.be/2IXP0TkwNJU?si=ZekGAxn08OKzT2FZ" target="_blank">SNMP</a> - In just a matter of minutes, Aaron expertly guides you through the workings of SNMP (Simple Network Management Protocol), making complex concepts easy to grasp. </li>
+                    <li><a href="https://youtu.be/dzHscTzpAME?si=xXZI8i-TBCS2WXKN" target="_blank">Terminal Navigation</a> - Master the power of essential commands to navigate files and folders with ease and efficiency like a true pro.</li>
+                    <li><a href="https://youtu.be/v45p_kJV9i4?si=bkwRPRecTDayuY5u" target="_blank">SSH</a> - Your Essential Guide to Secure Connections! </li>
+                    <li><a href="https://youtu.be/npCBicLcB4A?si=a1U2Qvq9nz_dYt3v" target="_blank">Web Enumeration</a> - Discover the essentials of web enumeration in just a few minutes!</li>
+                </ul>
+                </ul>
+                
+                </div>
+              </div>
+              <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                  Certifications
+                </div>
+                <div class="accordion-content">
+                  <ul style="list-style-type: none; padding: 0; margin: 0;">
+                    <li><a href="https://www.isc2.org/Certifications/CISSP" target="_blank">Certified Information Systems Security Professional (CISSP)</a> - One of the most recognized certifications for security professionals, covering a broad range of security topics.</li>
+                    <li><a href="https://www.comptia.org/certifications/security" target="_blank">CompTIA Security+</a> - An entry-level certification focusing on essential cybersecurity skills and concepts.</li>
+                    <li><a href="https://www.eccouncil.org/programs/certified-ethical-hacker-ceh/" target="_blank">Certified Ethical Hacker (CEH)</a> - A certification that teaches how to think and act like a hacker to strengthen organizational defenses.</li>
+                    <li><a href="https://www.offensive-security.com/pwk-oscp/" target="_blank">Offensive Security Certified Professional (OSCP)</a> - A hands-on penetration testing certification for advanced security practitioners.</li>
+                    <li><a href="https://www.comptia.org/certifications/network" target="_blank">CompTIA Network+ </a> validates the core skills necessary to establish, maintain, troubleshoot and secure networks in any environment, preparing you for a rewarding career in networking and cybersecurity.</li>
+                </ul>
+                
+                
+                </div>
+              </div>
+            </div>
+            
+            <script>
+              function toggleAccordion(header) {
+                const content = header.nextElementSibling;
+                
+                // Toggle 'open' class for the content section
+                content.classList.toggle('open');
+              }
+            </script>
+            
+           
+            <style>
+    /* Footer */
+    footer {
+  background: #ffffff;
+  color: #333;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  border-top: 1px solid #d2b48c;
+}
+footer img {
+  width: 24px;
+  margin: 0 5px;
+  vertical-align: middle;
+}
+</style>
+
+   <!-- Footer with Social Media Icons -->
+<footer class="text-center py-3 mt-5">
+  <p>&copy; 2024 Cyber Roots CTF. All rights reserved.</p>
+  <a href="https://facebook.com" class="me-2">
+    <img src="Images/Facebook.jpg" alt="Facebook">
+  </a>
+  <a href="https://instagram.com" class="me-2">
+    <img src="Images/Insta.jpg" alt="Instagram">
+  </a>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

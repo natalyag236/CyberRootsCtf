@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modals</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .modal-section {
+      margin-bottom: 20px;
+    }
+
+    .modal-link {
+      display: block;
+      color: blue;
+      text-decoration: underline;
+      margin: 5px 0;
+      cursor: pointer;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1000;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      padding: 20px;
+      width: 300px;
+      max-width: 90%;
+    }
+
+    .modal-content {
+      position: relative;
+    }
+
+    .modal .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+
+    .modal.open {
+      display: block;
+    }
+
+    .modal-overlay.open {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Cryptography</h1>
+  <div class="modal-section">
+    <a href="#" class="modal-link" data-modal="modal1">Challenge 1</a>
+    <a href="#" class="modal-link" data-modal="modal2">Challenge 2</a>
+    <a href="#" class="modal-link" data-modal="modal3">Challenge 3</a>
+  </div>
+
+  <h1>Forensics</h1>
+  <div class="modal-section">
+    <a href="#" class="modal-link" data-modal="modal4">Challenge 4</a>
+    <a href="#" class="modal-link" data-modal="modal5">Challenge 5</a>
+    <a href="#" class="modal-link" data-modal="modal6">Challenge 6</a>
+  </div>
+
+  <!-- Modals -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Beginner Cryp</p>
+    </div>
+  </div>
+
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Middle Cryp</p>
+    </div>
+  </div>
+
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Expert Cryp</p>
+    </div>
+  </div>
+
+  <div id="modal4" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Beginner Fore</p>
+    </div>
+  </div>
+
+  <div id="modal5" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Middle Fore</p>
+    </div>
+  </div>
+
+  <div id="modal6" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Expert Fore</p>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const links = document.querySelectorAll(".modal-link");
+      const modals = document.querySelectorAll(".modal");
+      const closeButtons = document.querySelectorAll(".close");
+
+      links.forEach(link => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const modalId = link.getAttribute("data-modal");
+          const modal = document.getElementById(modalId);
+          modal.classList.add("open");
+        });
+      });
+
+      closeButtons.forEach(button => {
+        button.addEventListener("click", () => {
+          const modal = button.closest(".modal");
+          modal.classList.remove("open");
+        });
+      });
+
+      // Close modal on outside click
+      window.addEventListener("click", (e) => {
+        modals.forEach(modal => {
+          if (e.target === modal) {
+            modal.classList.remove("open");
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+   <!-- Score Board Section -->
+   <section class="score-board container text-center my-5">
+    <h2>Score Board</h2>
+    <p>List of top scores will be displayed here.</p>
+
+    <!-- Form for submitting flags -->
+    <form action="submit_flag.php" method="POST" class="submit-flag-form">
+        <label for="flag">Flag:</label>
+        <input type="text" id="flag" name="flag_completed" required>
+        <input type="submit" value="Submit">
+    </form>
+
+    <!-- Leaderboard Table -->
+    <table class="leaderboard-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Username</th>
+                <th>Flags Completed</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <!-- Additional rows will be dynamically generated from the server -->
+        </tbody>
+    </table>
+</section>

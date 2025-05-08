@@ -1,0 +1,549 @@
+** {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Banner Section */
+.banner-section {
+  background: url('Images/logo3.jpg') center/cover no-repeat;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+.banner-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Brown overlay with 50% opacity */
+  background: rgba(139, 69, 19, 0.5);
+}
+.banner-content {
+  position: relative;
+  z-index: 1;
+}
+.banner-content h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+.banner-content p {
+  font-size: 1.2rem;
+}
+.mission-section p {
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1030;
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.navbar-brand {
+  font-size: large;
+  /* Changed from red to brown */
+  color: #8B4513;
+}
+.nav-link {
+  /* Changed from blue to brown */
+  color: #8B4513;
+}
+.nav-link:hover {
+  color: #ffffff;
+  background-color: #8B4513;
+  transition: 0.3s;
+}
+.nav-item {
+  color: #8B4513;
+  font-weight: 500;
+  padding-left: 35px;
+}
+
+/* Mission Section */
+.mission-section {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #d2b48c;
+  border-radius: 8px;
+  padding: 40px 20px;
+  margin: 40px auto;
+  max-width: 1200px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.mission-section h1 {
+  font-size: 2.5rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.mission-hero {
+  background: rgba(255,255,255,0.85);
+  color: #333;
+  font-family: 'Merriweather', serif;   /* elegant body font */
+}
+
+.mission-hero h2 {
+  font-family: 'Playfair Display', serif;  /* fancy heading */
+  font-size: 2.5rem;
+  color: #8B4513;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.mission-hero p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Button Section */
+.button-section {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Sguare Element */
+.sguare {
+  width: 150px;
+  height: 150px;
+  background-color: #ffffff;
+  border: 2px solid #8B4513;
+  border-radius: 50%;
+  margin: 0 auto 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.square img {
+  width: 80%;
+  height: 80%;
+  object-fit: cover;
+}
+
+/* Banner Design */
+.banner {
+  display: inline-block;
+  background-color: #8B4513; /* Brown */
+  color: #ffffff; /* White text */
+  padding: 30px;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+}
+.oval {
+  background-color: #ffffff; /* White background */
+  color: #8B4513; /* Brown text */
+  padding: 20px;
+  width: 80%;
+  height: 150px;
+  margin: 0 auto 30px;
+  border-radius: 50%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+}
+.oval:hover {
+  background-color: #8B4513;
+  color: #ffffff;
+}
+.oval p {
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 500;
+  margin: 0;
+}
+.btn:hover {
+  background-color: #8B4513;
+  border-color: #8B4513;
+}
+
+/* Footer */
+footer {
+  background-color: #8B4513;
+  text-align: center;
+  padding: 20px 0;
+  color: #ffffff;
+}
+footer p {
+  margin: 0;
+}
+
+/* Main Content */
+.main-content {
+  background: none !important;
+  padding: 0;             /* optional, if you want to tweak spacing */
+  margin: 2rem auto;      /* keep your vertical spacing */
+}
+.logo-title h1 {
+  margin-bottom: 50px;
+  color: #8B4513;
+}
+
+/* Background Image Section */
+.background-image-section {
+  background-image: url('Images/Picture9.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 600px;
+  color: #ffffff;
+  padding: 50px 0;
+}
+
+/* Challenge Boxes */
+.challenge-box {
+  background-color: #8B4513;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border-top: 5px solid #5A2D0C;
+}
+.challenge-box h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.challenge-list {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+.challenge-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #eaeaea;
+}
+.challenge-list label {
+  margin-left: 10px;
+  font-size: 1rem;
+}
+.challenge-list input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* Icons */
+.icons {
+  display: flex;
+  gap: 5px;
+}
+.icons .up-arrow,
+.icons .down-arrow,
+.icons .menu {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.completed-status {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+.add-task {
+  color: #8B4513;
+  font-size: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+.add-task:hover {
+  text-decoration: underline;
+}
+
+/* Scoreboard */
+.scoreboard {
+  background-color: #ffffff;
+  padding: 50px;
+  margin: 0 auto;
+  border: 1px solid #8B4513;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  color: #8B4513;
+}
+
+/* Image Banner */
+.image-banner {
+  background-image: url('Images/Picture10.png');
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Link Box */
+.link-box {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid #8B4513;
+  border-radius: 15px;
+  color: #8B4513;
+  font-size: 1.1em;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.link-box:hover {
+  background-color: #8B4513;
+  color: #ffffff;
+}
+
+/* Box */
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  border: 2px solid #8B4513;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+/* Logo Title */
+.logo-title h1 {
+  margin-bottom: 40px;
+  color: #8B4513;
+}
+
+/* Profile Card */
+.profile-card {
+  background: #fff;
+  border: 1px solid #d2b48c;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+}
+.profile-img {
+  display: block;
+  margin: 0 auto 15px;  /* centers horizontally, keeps 15px bottom gap */
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.profile-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #8B4513;
+}
+.profile-major,
+.profile-class {
+  color: #8B4513;
+}
+
+.profile-info a {
+  color: #8B4513 !important;
+  text-decoration: none !important;
+  font-weight: 700;        
+  font-size: 1.25rem;  
+  text-decoration: underline;
+}
+
+/* Logo Section */
+.logo-section {
+  background: none;           /* transparent */
+  color: #8B4513;             /* dark brown text */
+  text-align: center;
+  padding: 60px 20px;
+  margin: 20px auto;
+  max-width: 1200px;
+}
+.logo-title {
+  font-size: 2.5rem;
+  margin-top: 20px;
+  color: #8B4513;
+}
+
+.logo-3d-container {
+  perspective: 800px;            /* controls the “depth” of the 3D effect */
+  text-align: center;            /* center the container on the page */
+  margin: 0 auto 20px;
+}
+
+/* 2) Prep the image for 3D and animate it */
+.logo-3d {
+  display: inline-block;
+  transform-style: preserve-3d;  /* keep its faces in 3D space */
+  animation: spin3d 8s linear infinite;  /* continuous 3D spin */
+}
+
+/* 3) Define the 3D keyframes */
+@keyframes spin3d {
+  0%   { transform: rotateX(0deg)   rotateY(0deg); }
+  50%  { transform: rotateX(180deg) rotateY(180deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+/* Mission Paragraph */
+.mission-paragraph {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin: 0 auto;
+  max-width: 800px;
+  color: #000;
+}
+
+/* Profiles Row */
+.profiles-row {
+  display: flex;
+  justify-content: center;
+}
+
+/* Box Area and Right Box */
+.box-area {
+  width: 930px;
+}
+.right-box {
+  padding: 40px 30px 40px 40px;
+}
+
+/* Placeholder */
+::placeholder {
+  font-size: 16px;
+}
+
+/* Rounded Corners */
+.rounded-4 {
+  border-radius: 20px;
+}
+.rounded-5 {
+  border-radius: 30px;
+}
+
+@media only screen and (max-width: 768px) {
+  .box-area {
+    margin: 0 10px;
+  }
+  .left-box {
+    height: 100px;
+    overflow: hidden;
+  }
+  .right-box {
+    padding: 20px;
+  }
+}
+
+/* General Body Styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+/* Score Board Section (alternative class) */
+.score-board {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Submit Flag Form */
+.submit-flag-form {
+  margin-bottom: 30px;
+}
+.submit-flag-form input[type="text"] {
+  padding: 10px;
+  margin: 10px;
+  width: 200px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+.submit-flag-form input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #8B4513;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.submit-flag-form input[type="submit"]:hover {
+  background-color: #A0522D;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+th, td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+th {
+  background-color: #8B4513;
+  color: #ffffff;
+}
+tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+tr:hover {
+  background-color: #d1ecf1;
+}
+
+/* Responsive Table Design */
+@media (max-width: 600px) {
+  .score-board {
+    width: 95%;
+    padding: 15px;
+  }
+  table {
+    font-size: 0.9rem;
+  }
+}
+.carousel-img {
+  /* Ensure the image is displayed as a block element */
+  display: block;
+  /* Constrain the maximum width (adjust as needed) */
+  max-width: 600px;
+  /* Keep the aspect ratio intact */
+  height: auto;
+  /* Center the image horizontally */
+  margin: 0 auto;
+  /* Optionally crop the image if it's too tall 
+     by using max-height and object-fit */
+  max-height: 400px;
+  object-fit: cover; 
+}
+.welcome-message {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1rem;
+  color: #333;
+  background: #f9f9f9;
+  padding: 5px 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
